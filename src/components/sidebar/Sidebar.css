@@ -2,3 +2,34 @@
   padding: 20px;
   box-sizing: border-box;
 }
+
+.menu-container {
+  cursor: pointer;
+}
+
+.sidebar-text {
+  transition: .2s;
+}
+
+.menu-container:hover .sidebar-text {
+  color: rgb(168, 164, 164);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    top: 50px;
+    right: 50px;
+    background-color: white;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .sidebar-text {
+    display: none;
+  }
+}

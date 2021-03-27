@@ -1,3 +1,18 @@
 .next-page {
   font-size: 14px;
 }
+
+.disable-button {
+  cursor: not-allowed;
+  color: gray;
+}
+
+.active-button {
+  cursor: pointer;
+  color: black;
+  transition: .2s;
+}
+
+.active-button:hover {
+  color: gray;
+}
