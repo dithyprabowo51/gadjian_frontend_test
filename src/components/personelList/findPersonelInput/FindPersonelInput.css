@@ -1,0 +1,15 @@
+.find-personel-input {
+  width: 100%;
+  padding: 0 10px;
+  border: 1px solid rgb(80, 79, 79);
+}
+
+#input-personel {
+  border: none;
+  width: 100%;
+  height: 35px;
+}
+
+#input-personel:focus {
+  outline: none;
+}

@@ -1,0 +1,16 @@
+.user-card {
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.user-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.user-detail {
+  font-size: 14px;
+}
