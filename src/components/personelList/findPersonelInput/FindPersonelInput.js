@@ -33,7 +33,7 @@ const FindPersonelInput = (props) => {
     <div className="find-personel-input">
       <form onSubmit={handleSubmit}>
         <div className="row align-items-center">
-          <div className="col-2 btn-search-personel">
+          <div onClick={handleSubmit} className="col-2 btn-search-personel">
             <i className="fas fa-search text-info"></i>
           </div>
           <div className="col">
