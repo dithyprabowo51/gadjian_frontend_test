@@ -15,12 +15,16 @@ import { fetchUsers } from '../../redux/actions/fetchUsers.js'
 
 const PersonelList = () => {
   const allUsers = useSelector(state => state.users)
+  const userDetail = useSelector(state => state.user)
+  const isShowUserDetail = useSelector(state => state.isShowUserDetail)
   const isLoading = useSelector(state => state.isLoadingFetchUsers)
   const dispatch = useDispatch()
 
   const [users, setUsers] = useState([])
   const [currentFirstIndexUsers, setCurrentFirstIndexUsers] = useState(0)
   const [currentLastIndexUsers, setCurrentLastIndexUsers] = useState(4)
+
+  const [userInput, setUserInput] = useState('')
 
   const handleNextPage = () => {
     if (currentLastIndexUsers < allUsers.length) {
@@ -54,9 +58,29 @@ const PersonelList = () => {
     // eslint-disable-next-line
   }, [allUsers])
 
+  const handleRenderCard = () => {
+    if (!isShowUserDetail) {
+      return users.map(user => (
+        <div key={user.login.uuid} className="col-lg-3 col-md-12 my-2">
+          <UserCard user={user} />
+        </div>
+      ))
+    } else if (userDetail?.name) {
+      return (
+        <div className="col-lg-3 col-md-12 my-2">
+          <UserCard user={userDetail} />
+        </div>
+      )
+    } else {
+      return (
+        <h3 className="text-center">{userInput} Not Found</h3>
+      )
+    }
+  }
+
   return (
     <div className="personel-list">
-      <PersonalListHeader />
+      <PersonalListHeader setUserInput={(value) => setUserInput(value)} />
       {
         isLoading ?
           <div className="row justify-content-center mt-4">
@@ -67,14 +91,8 @@ const PersonelList = () => {
             </div>
           </div>
           :
-          <div className="row mt-4">
-            {
-              users.map(user => (
-                <div key={user.login.uuid} className="col-lg-3 col-md-12 my-2">
-                  <UserCard user={user} />
-                </div>
-              ))
-            }
+          <div className="row mt-4 justify-content-center">
+            {handleRenderCard()}
           </div>
       }
       <div className="d-flex justify-content-center mt-4">

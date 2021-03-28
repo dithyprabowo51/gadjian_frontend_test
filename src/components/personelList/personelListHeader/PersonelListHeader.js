@@ -5,7 +5,7 @@ import './PersonelListHeader.css'
 import FindPersonelInput from '../findPersonelInput/FindPersonelInput.js'
 import AddPersonelButton from '../addPersonelButton/AddPersonelButton.js'
 
-const PersonelListHeader = () => {
+const PersonelListHeader = (props) => {
   return (
     <div className="personel-list-header">
       <div className="row justify-content-between align-items-center">
@@ -16,7 +16,9 @@ const PersonelListHeader = () => {
         <div className="col-lg-5 col-md-12">
           <div className="row">
             <div className="col-lg-5 col-md-12 my-1">
-              <FindPersonelInput />
+              <FindPersonelInput
+                setUserInput={props.setUserInput}
+              />
             </div>
             <div className="col-lg-5 col-md-12 my-1">
               <AddPersonelButton />
