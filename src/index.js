@@ -8,11 +8,19 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // Router
 import { BrowserRouter as Router } from 'react-router-dom'
 
+// Provider (Redux)
+import { Provider } from 'react-redux'
+
+// Global Store (Redux)
+import { store } from './redux/store/store.js'
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
