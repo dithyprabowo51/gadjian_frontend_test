@@ -34,7 +34,7 @@ const Navbar = (props) => {
         {
           windowSize >= 768 ?
             <div>
-              <div>Hallo, <span className="text-info">Gadjian User</span></div>
+              <div>Hallo, <span className="text-info">Angeles</span></div>
             </div>
             :
             null

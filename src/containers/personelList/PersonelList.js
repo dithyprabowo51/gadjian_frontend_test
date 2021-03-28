@@ -95,22 +95,27 @@ const PersonelList = () => {
             {handleRenderCard()}
           </div>
       }
-      <div className="d-flex justify-content-center mt-4">
-        <div className="mx-2">
-          <PreviousPage
-            handlePreviousPage={handlePreviousPage}
-            currentFirstIndexUsers={currentFirstIndexUsers}
-            currentLastIndexUsers={currentLastIndexUsers}
-          />
-        </div>
-        <div className="mx-2">
-          <NextPage
-            handleNextPage={handleNextPage}
-            currentFirstIndexUsers={currentFirstIndexUsers}
-            currentLastIndexUsers={currentLastIndexUsers}
-          />
-        </div>
-      </div>
+      {
+        !isShowUserDetail ?
+          <div className="d-flex justify-content-center mt-4">
+            <div className="mx-2">
+              <PreviousPage
+                handlePreviousPage={handlePreviousPage}
+                currentFirstIndexUsers={currentFirstIndexUsers}
+                currentLastIndexUsers={currentLastIndexUsers}
+              />
+            </div>
+            <div className="mx-2">
+              <NextPage
+                handleNextPage={handleNextPage}
+                currentFirstIndexUsers={currentFirstIndexUsers}
+                currentLastIndexUsers={currentLastIndexUsers}
+              />
+            </div>
+          </div>
+          :
+          null
+      }
     </div>
   )
 }
