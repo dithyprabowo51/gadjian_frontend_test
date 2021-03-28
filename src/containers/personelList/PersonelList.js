@@ -22,6 +22,26 @@ const PersonelList = () => {
   const [currentFirstIndexUsers, setCurrentFirstIndexUsers] = useState(0)
   const [currentLastIndexUsers, setCurrentLastIndexUsers] = useState(4)
 
+  const handleNextPage = () => {
+    if (currentLastIndexUsers < allUsers.length) {
+      const userSliced = allUsers.slice(currentLastIndexUsers, currentLastIndexUsers + 4)
+      const userSlicedCopy = JSON.parse(JSON.stringify(userSliced))
+      setUsers(userSlicedCopy)
+      setCurrentFirstIndexUsers(currentLastIndexUsers)
+      setCurrentLastIndexUsers(currentLastIndexUsers + 4)
+    }
+  }
+
+  const handlePreviousPage = () => {
+    if (currentFirstIndexUsers > 0) {
+      const userSliced = allUsers.slice(currentFirstIndexUsers - 4, currentFirstIndexUsers)
+      const userSlicedCopy = JSON.parse(JSON.stringify(userSliced))
+      setUsers(userSlicedCopy)
+      setCurrentFirstIndexUsers(currentFirstIndexUsers - 4)
+      setCurrentLastIndexUsers(currentFirstIndexUsers)
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchUsers())
     // eslint-disable-next-line
@@ -31,7 +51,7 @@ const PersonelList = () => {
     const userSliced = allUsers.slice(currentFirstIndexUsers, currentLastIndexUsers)
     const userSlicedCopy = JSON.parse(JSON.stringify(userSliced))
     setUsers(userSlicedCopy)
-    console.log(userSlicedCopy, '<<<User Slice')
+    // eslint-disable-next-line
   }, [allUsers])
 
   return (
@@ -41,8 +61,8 @@ const PersonelList = () => {
         isLoading ?
           <div className="row justify-content-center mt-4">
             <div className="col-1">
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
           </div>
@@ -59,10 +79,18 @@ const PersonelList = () => {
       }
       <div className="d-flex justify-content-center mt-4">
         <div className="mx-2">
-          <PreviousPage />
+          <PreviousPage
+            handlePreviousPage={handlePreviousPage}
+            currentFirstIndexUsers={currentFirstIndexUsers}
+            currentLastIndexUsers={currentLastIndexUsers}
+          />
         </div>
         <div className="mx-2">
-          <NextPage />
+          <NextPage
+            handleNextPage={handleNextPage}
+            currentFirstIndexUsers={currentFirstIndexUsers}
+            currentLastIndexUsers={currentLastIndexUsers}
+          />
         </div>
       </div>
     </div>
